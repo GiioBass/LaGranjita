@@ -95,7 +95,8 @@ public class vistaMenu extends JFrame {
 		JButton btnUsuarios = new JButton("USUARIOS");
 		btnUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				ingresoUsuario ventanaUsuario = new ingresoUsuario();
+				ventanaUsuario.setVisible(true);
 				
 				
 			}

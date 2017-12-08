@@ -16,10 +16,11 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ingresoCategoria extends JFrame {
+public class ingresoUsuario extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtCategoria;
+	private JTextField txtUsuario;
+	private JTextField txtClave;
 	private JTextField txtIdEmpleado;
 
 	/**
@@ -29,7 +30,7 @@ public class ingresoCategoria extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ingresoCategoria frame = new ingresoCategoria();
+					ingresoUsuario frame = new ingresoUsuario();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,29 +42,39 @@ public class ingresoCategoria extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ingresoCategoria() {
+	public ingresoUsuario() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 290, 298);
+		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblCategoria = new JLabel("Categoria:");
-		lblCategoria.setBounds(27, 100, 63, 14);
-		contentPane.add(lblCategoria);
+		JLabel lblNewLabel = new JLabel("Usuario:");
+		lblNewLabel.setBounds(61, 71, 46, 14);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblClave = new JLabel("Clave:");
+		lblClave.setBounds(61, 106, 46, 14);
+		contentPane.add(lblClave);
 		
 		JLabel lblIdEmpleado = new JLabel("Id Empleado:");
-		lblIdEmpleado.setBounds(26, 137, 80, 19);
+		lblIdEmpleado.setBounds(61, 146, 46, 14);
 		contentPane.add(lblIdEmpleado);
 		
-		txtCategoria = new JTextField();
-		txtCategoria.setBounds(100, 97, 146, 20);
-		contentPane.add(txtCategoria);
-		txtCategoria.setColumns(10);
+		txtUsuario = new JTextField();
+		txtUsuario.setBounds(122, 68, 86, 20);
+		contentPane.add(txtUsuario);
+		txtUsuario.setColumns(10);
+		
+		txtClave = new JTextField();
+		txtClave.setText("");
+		txtClave.setBounds(117, 103, 86, 20);
+		contentPane.add(txtClave);
+		txtClave.setColumns(10);
 		
 		txtIdEmpleado = new JTextField();
-		txtIdEmpleado.setBounds(100, 136, 146, 20);
+		txtIdEmpleado.setBounds(122, 143, 86, 20);
 		contentPane.add(txtIdEmpleado);
 		txtIdEmpleado.setColumns(10);
 		
@@ -73,34 +84,39 @@ public class ingresoCategoria extends JFrame {
 				try
 				{
 				consultas ingresar = new consultas();
-				ingresar.guardarCategoria(txtCategoria.getText(), Integer.parseInt(txtIdEmpleado.getText()));
+				ingresar.ingresarUsuario(txtUsuario.getText(), txtClave.getText(), Integer.parseInt(txtIdEmpleado.getText()));
 				reiniciarCampos();
 				}catch(Exception e)
 				{
-					JOptionPane.showMessageDialog(null,"No se ingreso ningún dato");
+					JOptionPane.showMessageDialog(null, "No se ingreso ningún dato");
 				}
+				
 				
 			}
 		});
-		btnGuardar.setBounds(175, 196, 89, 23);
+		btnGuardar.setBounds(238, 208, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		JButton btnConsultar = new JButton("Consultar");
 		btnConsultar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				
-				vistaCategoria consulta = new vistaCategoria();
+				vistaUsuario consulta = new vistaUsuario();
 				consulta.setVisible(true);
 				
 			}
 		});
-		btnConsultar.setBounds(22, 196, 96, 23);
+		btnConsultar.setBounds(69, 208, 89, 23);
 		contentPane.add(btnConsultar);
 	}
 	
 	public void reiniciarCampos()
 	{
-		txtCategoria.setText(null);
+		
+		txtUsuario.setText(null);
+		txtClave.setText(null);
 		txtIdEmpleado.setText(null);
+		
 	}
+	
 }

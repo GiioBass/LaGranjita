@@ -115,7 +115,7 @@ public class vistaCategoria extends JFrame implements ActionListener {
 						
 						Object id = miTabla1.getModel().getValueAt(miTabla1.getSelectedRow(),0);
 												
-						String seleccion="DELETE FROM `productos` WHERE `idproductos`= ?";
+						String seleccion="DELETE FROM `categorias` WHERE `idCategorias`= ?";
 						
 						conn.abrirConexion();
 						PreparedStatement ps= conn.getConnection().prepareStatement(seleccion);

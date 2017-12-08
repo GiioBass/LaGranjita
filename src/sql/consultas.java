@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JOptionPane;
 
@@ -299,15 +300,17 @@ public class consultas {
 	
 	public void guardarCategoria (String a, int b) 
 	{
-		String insertTableSQL = "INSERT INTO `categorias`(`idProductos`, `nombreProduc`, `tipoProduc`)"
-                + "VALUES (null,?,?)";
+		
+		String vacio = null;
+		
+		String insertTableSQL = "INSERT INTO `categorias`(`idCategorias`, `categoria`, `Empleados_idEmpleados`) VALUES (?,?,?)";
 		
 
         try {
             dataCon conn = new dataCon();
             conn.abrirConexion();
             PreparedStatement ps = conn.getConnection().prepareStatement(insertTableSQL);
-         
+            ps.setString(1, vacio);
             ps.setString(2, a );
             ps.setInt(3, b);
            
@@ -393,7 +396,7 @@ public class consultas {
 		
 	}
 	
-	public void ingresarFactura (int a, int b, int c, int d) 
+	public void ingresarFactura (int a, String b, int c, int d) 
 	{
 		String insertTableSQL = "INSERT INTO `facturas`(`idFacturas`, `fechaFactura`, `Productos_idProductos`, `Clientes_idClientes`)"
                 + "VALUES (?,?,?,?,?)";
@@ -405,7 +408,7 @@ public class consultas {
             PreparedStatement ps = conn.getConnection().prepareStatement(insertTableSQL);
          
             ps.setInt(1, a);
-            ps.setInt(2, b);
+            ps.setString(2,  b);
             ps.setInt(3, c);
             ps.setInt(4, d);
             
@@ -426,4 +429,38 @@ public class consultas {
 		
 	}
 		
+	public void ingresarUsuario (String a, String b, int c) 
+	{
+		String vacio = null;
+		
+		String insertTableSQL = "INSERT INTO `usuarios`(`idUsuarios`, `Usuario`, `clave`, `Empleados_idEmpleados`) VALUES (?,?,?,?)";
+		
+
+        try {
+            dataCon conn = new dataCon();
+            conn.abrirConexion();
+            PreparedStatement ps = conn.getConnection().prepareStatement(insertTableSQL);
+            ps.setString(1,vacio);
+            ps.setString(2, a);
+            ps.setString(3,  b);
+            ps.setInt(4, c);
+           
+            
+            
+
+            // execute insert SQL stetement
+            ps.executeUpdate();
+
+            JOptionPane.showMessageDialog(null,"Usuario ingresado");
+           
+
+        } catch (SQLException e2) {
+
+            JOptionPane.showMessageDialog(null,e2.getMessage());
+            
+
+        }
+		
+	}
+	
 }

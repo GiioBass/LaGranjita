@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import sql.consultas;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -99,6 +100,8 @@ public class ingresoEmpleado extends JFrame {
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try
+				{	
 				
 				consultas ingresar = new consultas();
 				ingresar.guardarEmpleado(Integer.parseInt(txtIdEmpleado.getText()),
@@ -107,6 +110,12 @@ public class ingresoEmpleado extends JFrame {
 						Integer.parseInt(txtTelefonoEmpleado.getText()),
 						txtDireccionEmpleado.getText());
 				reiniciarCampos();
+				}catch(Exception e2)
+				{
+					JOptionPane.showMessageDialog(null, "No se ingreso ningún dato");
+				}
+				
+				
 			}
 		});
 		btnGuardar.setBounds(194, 228, 89, 23);

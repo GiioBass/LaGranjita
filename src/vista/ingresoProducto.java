@@ -122,7 +122,8 @@ public class ingresoProducto extends JFrame {
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				try
+				{
 				consultas ingresar = new consultas();
 				
 				ingresar.guardarPro(
@@ -137,8 +138,13 @@ public class ingresoProducto extends JFrame {
 				);
 				
 				reiniciarCampos();
+				}catch(Exception e2)
+				{
+					JOptionPane.showMessageDialog(null, "No se ingreso ningún dato");
+				}
 				
-			}
+				}
+			
 		});
 		btnGuardar.setBounds(300, 328, 104, 23);
 		contentPane.add(btnGuardar);
