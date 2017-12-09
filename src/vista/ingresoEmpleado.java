@@ -15,6 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class ingresoEmpleado extends JFrame {
 
@@ -46,54 +48,54 @@ public class ingresoEmpleado extends JFrame {
 	 */
 	public ingresoEmpleado() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 343, 417);
+		setBounds(100, 100, 308, 318);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblId = new JLabel("Id");
-		lblId.setBounds(52, 71, 46, 14);
+		JLabel lblId = new JLabel("Id:");
+		lblId.setBounds(49, 58, 46, 14);
 		contentPane.add(lblId);
 		
-		JLabel lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(52, 96, 46, 14);
+		JLabel lblNombre = new JLabel("Nombre:");
+		lblNombre.setBounds(49, 87, 46, 14);
 		contentPane.add(lblNombre);
 		
-		JLabel lblApellido = new JLabel("Apellido");
-		lblApellido.setBounds(52, 121, 46, 14);
+		JLabel lblApellido = new JLabel("Apellido:");
+		lblApellido.setBounds(49, 121, 46, 14);
 		contentPane.add(lblApellido);
 		
-		JLabel lblEdad = new JLabel("Telefono");
-		lblEdad.setBounds(52, 147, 46, 14);
+		JLabel lblEdad = new JLabel("Telefono:");
+		lblEdad.setBounds(50, 153, 46, 14);
 		contentPane.add(lblEdad);
 		
-		JLabel lblDireccion = new JLabel("Direccion");
-		lblDireccion.setBounds(52, 187, 46, 14);
+		JLabel lblDireccion = new JLabel("Direccion:");
+		lblDireccion.setBounds(52, 187, 60, 14);
 		contentPane.add(lblDireccion);
 		
 		txtIdEmpleado = new JTextField();
-		txtIdEmpleado.setBounds(108, 68, 86, 20);
+		txtIdEmpleado.setBounds(127, 53, 112, 20);
 		contentPane.add(txtIdEmpleado);
 		txtIdEmpleado.setColumns(10);
 		
 		txtNombreEmpleado = new JTextField();
-		txtNombreEmpleado.setBounds(108, 93, 86, 20);
+		txtNombreEmpleado.setBounds(127, 84, 112, 20);
 		contentPane.add(txtNombreEmpleado);
 		txtNombreEmpleado.setColumns(10);
 		
 		txtApellidoEmpleado = new JTextField();
-		txtApellidoEmpleado.setBounds(108, 118, 86, 20);
+		txtApellidoEmpleado.setBounds(127, 118, 112, 20);
 		contentPane.add(txtApellidoEmpleado);
 		txtApellidoEmpleado.setColumns(10);
 		
 		txtTelefonoEmpleado = new JTextField();
-		txtTelefonoEmpleado.setBounds(108, 144, 86, 20);
+		txtTelefonoEmpleado.setBounds(127, 150, 112, 20);
 		contentPane.add(txtTelefonoEmpleado);
 		txtTelefonoEmpleado.setColumns(10);
 		
 		txtDireccionEmpleado = new JTextField();
-		txtDireccionEmpleado.setBounds(108, 184, 86, 20);
+		txtDireccionEmpleado.setBounds(127, 184, 112, 20);
 		contentPane.add(txtDireccionEmpleado);
 		txtDireccionEmpleado.setColumns(10);
 		
@@ -118,7 +120,7 @@ public class ingresoEmpleado extends JFrame {
 				
 			}
 		});
-		btnGuardar.setBounds(194, 228, 89, 23);
+		btnGuardar.setBounds(163, 228, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		JButton btnConsulta = new JButton("Consulta");
@@ -130,8 +132,15 @@ public class ingresoEmpleado extends JFrame {
 				
 			}
 		});
-		btnConsulta.setBounds(62, 228, 89, 23);
+		btnConsulta.setBounds(33, 228, 89, 23);
 		contentPane.add(btnConsulta);
+		
+		JLabel lblIngresoEmpleados = new JLabel();
+		lblIngresoEmpleados.setText("INGRESO EMPLEADOS");
+		lblIngresoEmpleados.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIngresoEmpleados.setFont(new Font("Verdana", Font.BOLD, 18));
+		lblIngresoEmpleados.setBounds(10, 11, 272, 30);
+		contentPane.add(lblIngresoEmpleados);
 	}
 	
 	public void reiniciarCampos()

@@ -33,7 +33,7 @@ public class vistaProductos extends JFrame implements ActionListener{
 	
 	public vistaProductos() {
 		setSize(538, 335);
-		setTitle("Ventana Consulta");
+		setTitle("Productos");
 		setLocationRelativeTo(null);
 		setResizable(false);
 		
@@ -88,7 +88,7 @@ public class vistaProductos extends JFrame implements ActionListener{
 		labelTitulo = new JLabel();
 		labelTitulo.setBounds(27, 11, 400, 30);
 		labelTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-		labelTitulo.setText("CONSULTA PRODUCTOS");
+		labelTitulo.setText(" PRODUCTOS");
 		labelTitulo.setFont(new java.awt.Font("Verdana", 1, 18));
 		getContentPane().add(labelTitulo);
 		

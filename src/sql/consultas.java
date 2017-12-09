@@ -399,7 +399,7 @@ public class consultas {
 	public void ingresarFactura (int a, String b, int c, int d) 
 	{
 		String insertTableSQL = "INSERT INTO `facturas`(`idFacturas`, `fechaFactura`, `Productos_idProductos`, `Clientes_idClientes`)"
-                + "VALUES (?,?,?,?,?)";
+                + "VALUES (?,?,?,?)";
 		
 
         try {
@@ -462,5 +462,23 @@ public class consultas {
         }
 		
 	}
+	
+	public void editaUsuario(int id, String nombre, String clave, int idEmpleado )
+	{
+		try
+		{
+		dataCon conn = new dataCon();
+		
+		String seleccion="UPDATE `usuarios` SET `idUsuarios`=?,`Usuario`=?,`clave`=?,`Empleados_idEmpleados`=? WHERE ?";
+		PreparedStatement ps=conn.getConnection().prepareStatement(seleccion);
+		ps.setInt(1, id);
+		ps.setString(2, nombre);
+		ps.setString(3, clave);
+		ps.setInt(4, idEmpleado);
+		ps.executeUpdate();
+		}
+	}
+	
+	
 	
 }

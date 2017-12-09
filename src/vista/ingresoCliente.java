@@ -15,6 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class ingresoCliente extends JFrame {
 
@@ -47,7 +49,7 @@ public class ingresoCliente extends JFrame {
 	 */
 	public ingresoCliente() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 384, 437);
+		setBounds(100, 100, 337, 381);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -84,29 +86,29 @@ public class ingresoCliente extends JFrame {
 		
 		txtNombreCliente = new JTextField();
 		txtNombreCliente.setText("");
-		txtNombreCliente.setBounds(107, 103, 86, 20);
+		txtNombreCliente.setBounds(107, 103, 140, 20);
 		contentPane.add(txtNombreCliente);
 		txtNombreCliente.setColumns(10);
 		
 		txtApellidoCliente = new JTextField();
-		txtApellidoCliente.setBounds(107, 139, 86, 20);
+		txtApellidoCliente.setBounds(107, 139, 140, 20);
 		contentPane.add(txtApellidoCliente);
 		txtApellidoCliente.setColumns(10);
 		
 		txtEdadCliente = new JTextField();
 		txtEdadCliente.setText("");
-		txtEdadCliente.setBounds(107, 177, 86, 20);
+		txtEdadCliente.setBounds(107, 177, 140, 20);
 		contentPane.add(txtEdadCliente);
 		txtEdadCliente.setColumns(10);
 		
 		txtTelefono = new JTextField();
 		txtTelefono.setText("");
-		txtTelefono.setBounds(107, 214, 86, 20);
+		txtTelefono.setBounds(107, 214, 140, 20);
 		contentPane.add(txtTelefono);
 		txtTelefono.setColumns(10);
 		
 		txtDireccionCliente = new JTextField();
-		txtDireccionCliente.setBounds(107, 245, 86, 20);
+		txtDireccionCliente.setBounds(107, 245, 140, 20);
 		contentPane.add(txtDireccionCliente);
 		txtDireccionCliente.setColumns(10);
 		
@@ -131,7 +133,7 @@ public class ingresoCliente extends JFrame {
 			
 			}
 		});
-		btnGuardar.setBounds(227, 323, 89, 23);
+		btnGuardar.setBounds(203, 301, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		JButton btnConsulta = new JButton("Consulta");
@@ -143,8 +145,15 @@ public class ingresoCliente extends JFrame {
 				
 			}
 		});
-		btnConsulta.setBounds(43, 323, 89, 23);
+		btnConsulta.setBounds(43, 301, 89, 23);
 		contentPane.add(btnConsulta);
+		
+		JLabel lblIngresoClientes = new JLabel();
+		lblIngresoClientes.setText("INGRESO CLIENTES");
+		lblIngresoClientes.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIngresoClientes.setFont(new Font("Verdana", Font.BOLD, 18));
+		lblIngresoClientes.setBounds(10, 11, 289, 30);
+		contentPane.add(lblIngresoClientes);
 	}
 
 	public void reiniciarCampos()

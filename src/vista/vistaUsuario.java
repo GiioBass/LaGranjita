@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -30,7 +31,7 @@ public class vistaUsuario extends JFrame implements ActionListener {
 
 	public vistaUsuario() {
 		setSize(538, 335);
-		setTitle("Categorias");
+		setTitle("Usuarios");
 		setLocationRelativeTo(null);
 		setResizable(false);
 		
@@ -85,7 +86,7 @@ public class vistaUsuario extends JFrame implements ActionListener {
 		labelTitulo = new JLabel();
 		labelTitulo.setBounds(27, 11, 400, 30);
 		labelTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-		labelTitulo.setText("CATEGORIAS");
+		labelTitulo.setText("USUARIOS");
 		labelTitulo.setFont(new java.awt.Font("Verdana", 1, 18));
 		getContentPane().add(labelTitulo);
 		
@@ -135,11 +136,27 @@ public class vistaUsuario extends JFrame implements ActionListener {
 		JButton btnModificar = new JButton("Modificar");
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+			try
+			{	
+		
+				dataCon conn = new dataCon();
+				conn.abrirConexion();
+				String seleccion = "UPDATE `usuarios` SET `idUsuarios`=?,`Usuario`=?,`clave`=?,`Empleados_idEmpleados`=? WHERE ?";
+				PreparedStatement ps = conn.conexion.prepareStatement(seleccion);
 				
-				System.out.println("boton modificar");
+				Object usuario = (miTabla1.getModel().getValueAt(miTabla1.getSelectedRow(), 1));
+				Object clave = (miTabla1.getModel().getValueAt(miTabla1.getSelectedRow(), 2));
 				
+			String usu = Objects.toString(usuario);
+			
+			System.out.print(usu);
+			
+				
+			}catch(Exception e)
+			{
+				JOptionPane.showMessageDialog(null, "error al modificar");
 			}
-		});
+		}});
 		btnModificar.setBounds(252, 273, 89, 23);
 		getContentPane().add(btnModificar);
 		btnNewButton.addActionListener(this);

@@ -15,9 +15,14 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.awt.event.ActionEvent;
 import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JDayChooser;
+import com.toedter.calendar.JCalendar;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class ingresoFactura extends JFrame {
 
@@ -25,6 +30,9 @@ public class ingresoFactura extends JFrame {
 	private JTextField txtIdFactura;
 	private JTextField txtIdProducto;
 	private JTextField txtIdCliente;
+	private String fechaSelec;
+	private JDateChooser fecha;
+	
 
 	/**
 	 * Launch the application.
@@ -47,53 +55,49 @@ public class ingresoFactura extends JFrame {
 	 */
 	public ingresoFactura() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 335, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblIdFactura = new JLabel("Id Factura");
-		lblIdFactura.setBounds(59, 53, 46, 14);
+		JLabel lblIdFactura = new JLabel("Id Factura:");
+		lblIdFactura.setBounds(57, 56, 86, 14);
 		contentPane.add(lblIdFactura);
 		
-		JLabel lblFechaFactura = new JLabel("Fecha Factura");
-		lblFechaFactura.setBounds(59, 93, 46, 14);
+		JLabel lblFechaFactura = new JLabel("Fecha Factura:");
+		lblFechaFactura.setBounds(56, 94, 101, 14);
 		contentPane.add(lblFechaFactura);
 		
-		JLabel lblIdProducto = new JLabel("Id producto");
-		lblIdProducto.setBounds(59, 135, 46, 14);
+		JLabel lblIdProducto = new JLabel("Id producto:");
+		lblIdProducto.setBounds(57, 132, 86, 14);
 		contentPane.add(lblIdProducto);
 		
-		JLabel lblCantidad = new JLabel("Cantidad");
-		lblCantidad.setBounds(265, 135, 46, 14);
-		contentPane.add(lblCantidad);
-		
-		JLabel lblIdCliente = new JLabel("Id Cliente");
-		lblIdCliente.setBounds(59, 184, 46, 14);
+		JLabel lblIdCliente = new JLabel("Id Cliente:");
+		lblIdCliente.setBounds(57, 171, 86, 14);
 		contentPane.add(lblIdCliente);
 		
 		txtIdFactura = new JTextField();
-		txtIdFactura.setBounds(115, 50, 86, 20);
+		txtIdFactura.setBounds(145, 54, 104, 20);
 		contentPane.add(txtIdFactura);
 		txtIdFactura.setColumns(10);
 		
 		txtIdProducto = new JTextField();
-		txtIdProducto.setBounds(115, 132, 86, 20);
+		txtIdProducto.setBounds(145, 129, 104, 20);
 		contentPane.add(txtIdProducto);
 		txtIdProducto.setColumns(10);
 		
 		txtIdCliente = new JTextField();
-		txtIdCliente.setBounds(115, 181, 86, 20);
+		txtIdCliente.setBounds(145, 166, 104, 20);
 		contentPane.add(txtIdCliente);
 		txtIdCliente.setColumns(10);
 		
-		JDateChooser fecha = new JDateChooser();
-		fecha.setBounds(115, 93, 81, 20);
+		//Prueba
+		
+		fecha = new JDateChooser();
+		fecha.setBounds(145, 90, 126, 20);
 		contentPane.add(fecha);
 		
-		String formato = fecha.getDateFormatString();
-		Date date = fecha.getDate();
 		
 		
 		JButton btnIngresar = new JButton("Ingresar");
@@ -102,10 +106,23 @@ public class ingresoFactura extends JFrame {
 				try
 				{
 				consultas ingresar = new consultas();
+				
+				String anio = String.valueOf(fecha.getCalendar().get(Calendar.YEAR));
+				String mes = String.valueOf(fecha.getCalendar().get(Calendar.MONTH)+1);
+				String dia = String.valueOf(fecha.getCalendar().get(Calendar.DAY_OF_MONTH));
+				fechaSelec = (dia+"/"+mes+"/"+anio);
+				
 				ingresar.ingresarFactura(Integer.parseInt(txtIdFactura.getText()),
-						date.toString(),
+						fechaSelec,
 						Integer.parseInt(txtIdProducto.getText()),
 						Integer.parseInt(txtIdCliente.getText()));
+				
+				
+				
+				
+					reiniciarCampos();
+				
+				System.out.print(fechaSelec);
 				}catch(Exception e2)
 				{
 					JOptionPane.showMessageDialog(null, "No se ingreso ningún dato");
@@ -114,7 +131,8 @@ public class ingresoFactura extends JFrame {
 				}
 			
 		});
-		btnIngresar.setBounds(243, 217, 89, 23);
+		
+		btnIngresar.setBounds(201, 217, 89, 23);
 		contentPane.add(btnIngresar);
 		
 		JButton btnConsultar = new JButton("Consultar");
@@ -129,8 +147,22 @@ public class ingresoFactura extends JFrame {
 		btnConsultar.setBounds(41, 217, 89, 23);
 		contentPane.add(btnConsultar);
 		
-		
-		
-		
+		JLabel lblIngresoFactura = new JLabel();
+		lblIngresoFactura.setText("INGRESO FACTURA");
+		lblIngresoFactura.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIngresoFactura.setFont(new Font("Verdana", Font.BOLD, 18));
+		lblIngresoFactura.setBounds(21, 11, 274, 30);
+		contentPane.add(lblIngresoFactura);
 	}
+	
+		
+	
+		public void reiniciarCampos() 
+		{
+			txtIdFactura.setText(null);
+			txtIdProducto.setText(null);
+			txtIdCliente.setText(null);
+			
+			
+		}
 }

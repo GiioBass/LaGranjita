@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import sql.consultas;
+import javax.swing.SwingConstants;
 
 public class ingresoProducto extends JFrame {
 
@@ -52,9 +53,9 @@ public class ingresoProducto extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		setTitle("prueba");
 		
-		JButton btnConsulta = new JButton("Consultar Productos");
+		
+		JButton btnConsulta = new JButton("Consultar");
 		btnConsulta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -158,10 +159,12 @@ public class ingresoProducto extends JFrame {
 		contentPane.add(txtIdPro);
 		txtIdPro.setColumns(10);
 		
-		JLabel lblProductos = new JLabel("Productos");
-		lblProductos.setFont(new Font("Rockwell Condensed", Font.BOLD, 31));
-		lblProductos.setBounds(142, 24, 147, 32);
-		contentPane.add(lblProductos);
+		JLabel lblIngresoProductos = new JLabel();
+		lblIngresoProductos.setText("INGRESO PRODUCTOS");
+		lblIngresoProductos.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIngresoProductos.setFont(new Font("Verdana", Font.BOLD, 18));
+		lblIngresoProductos.setBounds(28, 28, 400, 30);
+		contentPane.add(lblIngresoProductos);
 	}
 	
 	

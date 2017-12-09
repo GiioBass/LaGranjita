@@ -15,6 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class ingresoUsuario extends JFrame {
 
@@ -44,7 +46,7 @@ public class ingresoUsuario extends JFrame {
 	 */
 	public ingresoUsuario() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 352, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -59,22 +61,22 @@ public class ingresoUsuario extends JFrame {
 		contentPane.add(lblClave);
 		
 		JLabel lblIdEmpleado = new JLabel("Id Empleado:");
-		lblIdEmpleado.setBounds(61, 146, 46, 14);
+		lblIdEmpleado.setBounds(61, 146, 76, 14);
 		contentPane.add(lblIdEmpleado);
 		
 		txtUsuario = new JTextField();
-		txtUsuario.setBounds(122, 68, 86, 20);
+		txtUsuario.setBounds(132, 68, 115, 20);
 		contentPane.add(txtUsuario);
 		txtUsuario.setColumns(10);
 		
 		txtClave = new JTextField();
 		txtClave.setText("");
-		txtClave.setBounds(117, 103, 86, 20);
+		txtClave.setBounds(132, 103, 115, 20);
 		contentPane.add(txtClave);
 		txtClave.setColumns(10);
 		
 		txtIdEmpleado = new JTextField();
-		txtIdEmpleado.setBounds(122, 143, 86, 20);
+		txtIdEmpleado.setBounds(132, 143, 115, 20);
 		contentPane.add(txtIdEmpleado);
 		txtIdEmpleado.setColumns(10);
 		
@@ -94,7 +96,7 @@ public class ingresoUsuario extends JFrame {
 				
 			}
 		});
-		btnGuardar.setBounds(238, 208, 89, 23);
+		btnGuardar.setBounds(207, 208, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		JButton btnConsultar = new JButton("Consultar");
@@ -108,6 +110,13 @@ public class ingresoUsuario extends JFrame {
 		});
 		btnConsultar.setBounds(69, 208, 89, 23);
 		contentPane.add(btnConsultar);
+		
+		JLabel lblIngresoUsuarios = new JLabel();
+		lblIngresoUsuarios.setText("INGRESO USUARIOS");
+		lblIngresoUsuarios.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIngresoUsuarios.setFont(new Font("Verdana", Font.BOLD, 18));
+		lblIngresoUsuarios.setBounds(10, 11, 326, 30);
+		contentPane.add(lblIngresoUsuarios);
 	}
 	
 	public void reiniciarCampos()

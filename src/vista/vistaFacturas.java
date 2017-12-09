@@ -33,7 +33,7 @@ public class vistaFacturas extends JFrame implements ActionListener{
 
 	public vistaFacturas() {
 		setSize(538, 335);
-		setTitle("Clientes");
+		setTitle("Facturas");
 		setLocationRelativeTo(null);
 		setResizable(false);
 		
@@ -88,7 +88,7 @@ public class vistaFacturas extends JFrame implements ActionListener{
 		labelTitulo = new JLabel();
 		labelTitulo.setBounds(27, 11, 400, 30);
 		labelTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-		labelTitulo.setText("CLIENTES");
+		labelTitulo.setText("FACTURAS");
 		labelTitulo.setFont(new java.awt.Font("Verdana", 1, 18));
 		getContentPane().add(labelTitulo);
 		
