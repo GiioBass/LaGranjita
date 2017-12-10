@@ -1,5 +1,6 @@
 package vista;
 
+import java.awt.datatransfer.SystemFlavorMap;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
@@ -140,18 +141,34 @@ public class vistaUsuario extends JFrame implements ActionListener {
 			{	
 		
 				dataCon conn = new dataCon();
-				conn.abrirConexion();
-				String seleccion = "UPDATE `usuarios` SET `idUsuarios`=?,`Usuario`=?,`clave`=?,`Empleados_idEmpleados`=? WHERE ?";
-				PreparedStatement ps = conn.conexion.prepareStatement(seleccion);
-				
+				Object id = (miTabla1.getModel().getValueAt(miTabla1.getSelectedRow(), 0));
 				Object usuario = (miTabla1.getModel().getValueAt(miTabla1.getSelectedRow(), 1));
 				Object clave = (miTabla1.getModel().getValueAt(miTabla1.getSelectedRow(), 2));
+				Object idEmpleado = (miTabla1.getModel().getValueAt(miTabla1.getSelectedRow(), 3));
 				
+			int idUsu = Integer.valueOf((String) id);
 			String usu = Objects.toString(usuario);
+			String clav = Objects.toString(clave);
+			int idEmple = Integer.valueOf((String) idEmpleado);
 			
-			System.out.print(usu);
+			conn.abrirConexion();
 			
+				String seleccion = "UPDATE `usuarios` SET `Usuario`=?,`clave`=?,`Empleados_idEmpleados`=? WHERE `idUsuarios`=?";
 				
+				PreparedStatement ps = conn.getConnection().prepareStatement(seleccion);
+		
+			
+			ps.setString(1, usu);
+			ps.setString(2, clav);
+			ps.setInt(3, idEmple);
+			ps.setInt(4, idUsu);
+			ps.executeUpdate();
+			
+			System.out.print(idUsu);
+			System.out.print(usu);
+			System.out.print(clav);
+			System.out.print(idEmple);
+			
 			}catch(Exception e)
 			{
 				JOptionPane.showMessageDialog(null, "error al modificar");
