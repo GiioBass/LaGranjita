@@ -164,10 +164,6 @@ public class vistaUsuario extends JFrame implements ActionListener {
 			ps.setInt(4, idUsu);
 			ps.executeUpdate();
 			
-			System.out.print(idUsu);
-			System.out.print(usu);
-			System.out.print(clav);
-			System.out.print(idEmple);
 			
 			}catch(Exception e)
 			{

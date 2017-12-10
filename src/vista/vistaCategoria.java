@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
-
+import java.util.Objects;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -140,7 +140,38 @@ public class vistaCategoria extends JFrame implements ActionListener {
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				System.out.println("boton modificar");
+				try
+				{	
+			
+					dataCon conn = new dataCon();
+					Object id = (miTabla1.getModel().getValueAt(miTabla1.getSelectedRow(), 0));
+					Object categoria = (miTabla1.getModel().getValueAt(miTabla1.getSelectedRow(), 1));
+					Object idEmpleado = (miTabla1.getModel().getValueAt(miTabla1.getSelectedRow(), 2));
+					
+					
+				int a = Integer.valueOf((String) id);
+				String b = Objects.toString(categoria);
+				int c = Integer.valueOf((String) idEmpleado);
+				
+				
+				conn.abrirConexion();
+				
+					String seleccion =" UPDATE `categorias` SET `categoria`=?,`Empleados_idEmpleados`=? WHERE `idCategorias`=?";
+					
+					PreparedStatement ps = conn.getConnection().prepareStatement(seleccion);
+				
+				ps.setString(1, b);
+				ps.setInt(2, c);
+				ps.setInt(3, a);
+				
+				ps.executeUpdate();
+				
+				JOptionPane.showMessageDialog(null, "La categoría se modifico exitosamente");
+				
+				}catch(Exception e)
+				{
+					JOptionPane.showMessageDialog(null, "error al modificar");
+				}
 				
 			}
 		});

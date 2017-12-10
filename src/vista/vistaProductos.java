@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -139,7 +140,46 @@ public class vistaProductos extends JFrame implements ActionListener{
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				System.out.println("boton modificar");
+				try
+				{	
+			
+					dataCon conn = new dataCon();
+					Object id = (miTabla1.getModel().getValueAt(miTabla1.getSelectedRow(), 0));
+					Object nombrePro = (miTabla1.getModel().getValueAt(miTabla1.getSelectedRow(), 1));
+					Object tipoPro = (miTabla1.getModel().getValueAt(miTabla1.getSelectedRow(), 2));
+					Object unidadPro = (miTabla1.getModel().getValueAt(miTabla1.getSelectedRow(), 3));
+					Object costoPro = (miTabla1.getModel().getValueAt(miTabla1.getSelectedRow(), 4));
+					Object cantidadPro = (miTabla1.getModel().getValueAt(miTabla1.getSelectedRow(), 5));
+					
+				int a = Integer.valueOf((String) id);
+				String b = Objects.toString(nombrePro);
+				String c = Objects.toString(tipoPro);
+				String d = Objects.toString(unidadPro);
+				Double e = Double.valueOf((String) costoPro);
+				int f = Integer.valueOf((String) cantidadPro);
+				
+				conn.abrirConexion();
+				
+					String seleccion =" UPDATE `productos` SET `nombreProduc`=?,`tipoProduc`=?,`unidadMediadProduc`=?,`costoProduc`=?,`cantidadPro`=? WHERE `idProductos`=?";
+					
+					PreparedStatement ps = conn.getConnection().prepareStatement(seleccion);
+			
+				
+				ps.setString(1, b);
+				ps.setString(2, c);
+				ps.setString(3, d);
+				ps.setDouble(4, e);
+				ps.setInt(5, f);
+				ps.setInt(6, a);
+				
+				ps.executeUpdate();
+				
+				JOptionPane.showMessageDialog(null, "El producto se modifico exitosamente");
+				
+				}catch(Exception e)
+				{
+					JOptionPane.showMessageDialog(null, "error al modificar");
+				}
 				
 			}
 		});

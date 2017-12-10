@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -140,7 +141,45 @@ public class vistaEmpleados extends JFrame implements ActionListener {
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				System.out.println("boton modificar");
+				try
+				{	
+			
+					dataCon conn = new dataCon();
+					Object id = (miTabla1.getModel().getValueAt(miTabla1.getSelectedRow(), 0));
+					Object nombreEmple = (miTabla1.getModel().getValueAt(miTabla1.getSelectedRow(), 1));
+					Object apellidoEmple = (miTabla1.getModel().getValueAt(miTabla1.getSelectedRow(), 2));
+					Object telEmple = (miTabla1.getModel().getValueAt(miTabla1.getSelectedRow(), 3));
+					Object dirEmple = (miTabla1.getModel().getValueAt(miTabla1.getSelectedRow(), 4));
+					
+					
+				int a = Integer.valueOf((String) id);
+				String b = Objects.toString(nombreEmple);
+				String c = Objects.toString(apellidoEmple);
+				int d = Integer.valueOf((String) telEmple);
+				String e = Objects.toString(dirEmple);
+				
+				conn.abrirConexion();
+				
+					String seleccion =" UPDATE `empleados` SET `nombreEmpleado`=?,`apellidoEmpleado`=?,`telefonoEmpleado`=?,`direccionEmpleado`=? WHERE `idEmpleados`=?";
+					
+					PreparedStatement ps = conn.getConnection().prepareStatement(seleccion);
+			
+				
+				ps.setString(1, b);
+				ps.setString(2, c);
+				ps.setInt(3, d);
+				ps.setString(4, e);
+				ps.setInt(5, a);
+				
+				
+				ps.executeUpdate();
+				
+				JOptionPane.showMessageDialog(null, "El empleado se modifico exitosamente");
+				
+				}catch(Exception e)
+				{
+					JOptionPane.showMessageDialog(null, "error al modificar");
+				}
 				
 			}
 		});

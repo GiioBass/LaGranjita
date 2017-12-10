@@ -116,13 +116,10 @@ public class ingresoFactura extends JFrame {
 						fechaSelec,
 						Integer.parseInt(txtIdProducto.getText()),
 						Integer.parseInt(txtIdCliente.getText()));
-				
-				
-				
-				
+			
 					reiniciarCampos();
 				
-				System.out.print(fechaSelec);
+				
 				}catch(Exception e2)
 				{
 					JOptionPane.showMessageDialog(null, "No se ingreso ningún dato");
