@@ -56,27 +56,27 @@ public class ingresoCliente extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Id Cliente");
-		lblNewLabel.setBounds(43, 71, 46, 14);
+		lblNewLabel.setBounds(43, 66, 55, 24);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nombre");
-		lblNewLabel_1.setBounds(43, 106, 46, 14);
+		lblNewLabel_1.setBounds(43, 106, 67, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblApellido = new JLabel("Apellido");
-		lblApellido.setBounds(43, 142, 46, 14);
+		lblApellido.setBounds(43, 142, 67, 14);
 		contentPane.add(lblApellido);
 		
 		JLabel lblEdad = new JLabel("Edad");
-		lblEdad.setBounds(43, 180, 46, 14);
+		lblEdad.setBounds(43, 180, 67, 14);
 		contentPane.add(lblEdad);
 		
 		JLabel lblTelefono = new JLabel("Telefono");
-		lblTelefono.setBounds(43, 217, 46, 14);
+		lblTelefono.setBounds(43, 217, 67, 14);
 		contentPane.add(lblTelefono);
 		
 		JLabel lblDireccion = new JLabel("Direccion");
-		lblDireccion.setBounds(43, 248, 46, 14);
+		lblDireccion.setBounds(43, 248, 67, 14);
 		contentPane.add(lblDireccion);
 		
 		txtIdCliente = new JTextField();

@@ -53,7 +53,7 @@ public class ingresoUsuario extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Usuario:");
-		lblNewLabel.setBounds(61, 71, 46, 14);
+		lblNewLabel.setBounds(61, 71, 76, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblClave = new JLabel("Clave:");
@@ -65,18 +65,18 @@ public class ingresoUsuario extends JFrame {
 		contentPane.add(lblIdEmpleado);
 		
 		txtUsuario = new JTextField();
-		txtUsuario.setBounds(132, 68, 115, 20);
+		txtUsuario.setBounds(142, 68, 115, 20);
 		contentPane.add(txtUsuario);
 		txtUsuario.setColumns(10);
 		
 		txtClave = new JTextField();
 		txtClave.setText("");
-		txtClave.setBounds(132, 103, 115, 20);
+		txtClave.setBounds(142, 103, 115, 20);
 		contentPane.add(txtClave);
 		txtClave.setColumns(10);
 		
 		txtIdEmpleado = new JTextField();
-		txtIdEmpleado.setBounds(132, 143, 115, 20);
+		txtIdEmpleado.setBounds(142, 143, 115, 20);
 		contentPane.add(txtIdEmpleado);
 		txtIdEmpleado.setColumns(10);
 		

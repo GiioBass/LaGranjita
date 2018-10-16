@@ -6,10 +6,22 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import conexion.dataCon;
+import objects.usuario;
+import sql.consultas;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class login extends JFrame {
@@ -70,6 +82,30 @@ public class login extends JFrame {
 				
 				
 				
+				  if(txtUsuario.getText().length()>0 && txtClave.getText().length()>0){
+					  
+				        try{
+				            
+				        	dataCon conn = new dataCon();
+				        	conn.abrirConexion();
+				            Statement s =  conn.getConnection().createStatement();
+				            ResultSet r = s.executeQuery("select * from usuarios where idUsuarios=\""+txtUsuario.getText()+"\" and clave=\""+txtClave.getText()+"\" ");
+				            boolean found = false;
+				            int user_id = 0;
+				            while(r.next()){ found=true; user_id = r.getInt("id"); }
+				            if(found){
+				                JOptionPane.showMessageDialog(rootPane, "Acceso concedido ...");
+				            }else{
+				                JOptionPane.showMessageDialog(rootPane, "Acceso Denegado!!");
+				            }
+				        }catch(SQLException e){
+				        System.out.println(e.getMessage());
+				        }
+				        
+				        
+				        }else{
+				            JOptionPane.showMessageDialog(rootPane, "No debes dejar campos vacios !!");        
+				        }
 				
 				
 			}
@@ -79,11 +115,8 @@ public class login extends JFrame {
 	}
 	
 	
-	public int validarIngreso()
-	{
-		String usuario =  txtUsuario.getText();
-		String clave 
-	}
 	
+	
+
 	
 }

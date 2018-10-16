@@ -59,19 +59,19 @@ public class ingresoEmpleado extends JFrame {
 		contentPane.add(lblId);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(49, 87, 46, 14);
+		lblNombre.setBounds(49, 87, 63, 14);
 		contentPane.add(lblNombre);
 		
 		JLabel lblApellido = new JLabel("Apellido:");
-		lblApellido.setBounds(49, 121, 46, 14);
+		lblApellido.setBounds(49, 121, 63, 14);
 		contentPane.add(lblApellido);
 		
 		JLabel lblEdad = new JLabel("Telefono:");
-		lblEdad.setBounds(50, 153, 46, 14);
+		lblEdad.setBounds(50, 153, 62, 14);
 		contentPane.add(lblEdad);
 		
 		JLabel lblDireccion = new JLabel("Direccion:");
-		lblDireccion.setBounds(52, 187, 60, 14);
+		lblDireccion.setBounds(52, 187, 70, 14);
 		contentPane.add(lblDireccion);
 		
 		txtIdEmpleado = new JTextField();
